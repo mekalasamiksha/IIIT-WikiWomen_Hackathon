@@ -1,0 +1,1007 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+      <style>
+        :root {
+--color-black: white ;
+--color-white: black;
+--color-grey:  black;
+--sticky-top-pos: 15vh;
+--buffer: 5rem;
+}
+
+
+html,
+body {
+margin: 0 auto;
+padding: 0;
+background-color:white;
+color: black;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+
+}
+
+body::-webkit-scrollbar{
+  display: none;
+}
+
+.timeline__time h3 {
+font-family: 'Righteous', cursive;
+}
+
+h3, h5 {
+margin-top: 0%;
+margin-bottom: 0%;
+line-height: normal;
+font-size: 16px;
+}
+
+.timeline {
+padding-bottom: 25%;
+width : 100%;
+margin: 0 auto;
+}
+
+.timeline__section {
+display: flex;
+flex-direction: row;
+align-items: start;
+position: relative;
+}
+
+.timeline__left >:first-child{
+font-size: 1.5rem;
+}
+.timeline__left{
+flex : 0.15;
+float : left;
+
+}
+.timeline__left,
+.timeline__middle,
+.timeline__tracker {
+position: sticky;
+top: var(--sticky-top-pos);
+
+}
+
+.timeline__left,
+.timeline__middle {
+margin-bottom: var(--buffer);
+}
+
+.timeline__right {
+flex : 0.85;
+
+background: linear-gradient(
+  180deg,
+  #800080 0%,
+  #800080 100%,
+  #800080  0%,
+  #800080  100%
+);
+font-family :Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.timeline__right >div{
+background-color:white;
+margin-left: 4px;
+text-align: center;
+display: flex;
+flex-direction: row;
+padding-top: 15px;
+align-items: center;
+justify-content: center;
+padding-right: 3%;
+background: linear-gradient(
+to right,
+#fff 0%,
+#fff 5%,
+black  5%,
+black  31%,
+#fff 31%,
+#fff 100%
+);
+
+}
+
+.timeline__right_speakers {
+width: 30%;
+margin-left: 1%;
+margin-right: 1%;
+flex : 0.35;
+padding-bottom: 20px;
+
+}
+.timeline__right_details{
+flex : 0.65;
+text-align: start;
+border-bottom: 0.5px solid #800080;
+padding-bottom: 20px;
+
+}
+
+.speakers {
+align-content: center;
+padding-left: 20%;
+padding-right: 20%;
+}
+
+.avatar {
+vertical-align: middle;
+width: 120px;
+height: 120px;
+
+padding: 1.5px;
+}
+
+.icons{
+    vertical-align: middle;
+    width: 120px;
+    height: 120px;
+    
+    padding: 0.5px;
+}
+@media(max-width: 790px){
+ 
+ h3,h5{
+  font-size : 13px;
+ }
+ .avatar{
+  width: 50px;
+height: 50px;
+ }
+
+ .icons{
+    width: 60px;
+    height: 60px;
+ }
+ .special{
+ width: 55px;
+height: 55px;
+ }
+}
+
+@media(max-width: 600px){
+    h3,h5{
+  font-size : 13px;
+ }
+ .avatar{
+  width: 40px;
+height: 40px;
+ }
+
+ .icons{
+    width: 50px;
+    height: 50px;
+ }
+ .special{
+ width: 55px;
+height: 55px;
+ }
+}
+.timeline__time {
+width: 100%;
+padding: 0% 1% 0 0 ;
+float: left ;
+}
+
+.timeline__content > h5{
+  font-weight: bolder;
+}
+
+.timeline__bullet {
+--bullet-dims: 20px;
+background-color: black;
+width: var(--bullet-dims);
+height: var(--bullet-dims);
+border-radius: 99999%;
+transform: translateX(calc(var(--bullet-dims) / 2 + 2px));
+float: left;
+}
+
+.timeline__content {
+font-size: 1.4rem;
+transition: color 1s cubic-bezier(0, 0.39, 0.58, 1);
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.timeline__content h5{
+padding-top: 10px;
+padding-bottom: 10px;
+font-weight: 400;
+}
+
+.timeline__content h5:hover {
+color: #800080;
+}
+
+.bold, .timeline__time >h5{
+font-family: 'Montserrat', sans-serif;
+font-weight: 800;
+}
+
+input{
+background-color: white;
+border : 0;
+font-weight: bolder;
+float : right;
+}
+
+.animate-on-scroll {
+color: black;
+}
+
+
+.tabset > input[type="radio"] {
+position: absolute;
+left: -200vw;
+}
+
+.tabset .tab-panel {
+display: none;
+}
+
+.tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+.tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+.tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+.tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+.tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+.tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+display: block;
+}
+
+
+body {
+font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
+color: #333;
+font-weight: 300;
+}
+
+.tabset > label {
+position: relative;
+display: inline-block;
+padding: 15px 15px 25px;
+border: 1px solid transparent;
+border-bottom: 0;
+cursor: pointer;
+font-weight: 600;
+font-family: 'Montserrat', sans-serif;
+}
+
+.tabset > label::after {
+content: "";
+position: absolute;
+left: 15px;
+bottom: 10px;
+width: 22px;
+height: 4px;
+background: #8d8d8d;
+}
+
+.tabset > label:hover,
+.tabset > input:focus + label {
+color: #800080;
+}
+
+.tabset > label:hover::after,
+.tabset > input:focus + label::after,
+.tabset > input:checked + label::after {
+background:#800080;
+}
+
+.tabset > input:checked + label {
+border-color: #ccc;
+border-bottom: 1px solid #fff;
+margin-bottom: -1px;
+}
+
+.tab-panel {
+
+border-top: 1px solid #ccc;
+}
+
+
+
+*,
+*:before,
+*:after {
+box-sizing: border-box;
+}
+
+body {
+padding-left: 0px;
+padding-top: 0px;
+}
+.special{
+vertical-align: middle;
+width: 60px;
+height: 60px;
+border-radius: 100%;
+
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #800080;
+  height: 60px;
+}
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+}
+
+</style>
+</head>
+  <body>
+    <ul class="navigation-list">
+      <li><a href="home.html">HOME</a></li>
+      <li><a href="postf.html">POSTS</a></li>
+      <li><a href="nominatef.html">NOMINATE</a></li>
+      <li><a href="discuss.html">DISCUSS</a></li>
+      <li><a href="loginrealf.html">LOGIN</a></li>
+      <li><a href="loginf.html">SIGNUP</a></li>
+  </ul>
+    <main>
+    <div class="tabset">
+      <!-- Tab 1 -->
+      <input type="radio" name="tabset" id="tab1" aria-controls="Technology" checked>
+      <label for="tab1">   Technology  </label>
+      <!-- Tab 2 -->
+      <input type="radio" name="tabset" id="tab2" aria-controls="Arts">
+      <label for="tab2">Arts</label>
+      <!-- Tab 3 -->
+      <input type="radio" name="tabset" id="tab3" aria-controls="Policy">
+      <label for="tab3">Policy</label>
+      <!-- Tab 4 -->
+      <input type="radio" name="tabset" id="tab4" aria-controls="Sports">
+      <label for="tab4">Sports</label>
+      
+      <div class="tab-panels">
+        <section id="Technology" class="tab-panel">
+          
+          <div style="height: 5vh">
+            <div class="timeline">
+              <h2></h2>
+              <div class="timeline__section">
+                
+    
+                <div class="timeline__right">
+                  
+                </div>
+              </div>
+              
+            <!--SEC0-->
+ 
+              <div class="timeline__section">
+                <div class="timeline__left">
+                  <div class="timeline__time">
+                    <h5 style="margin-bottom: 0px; margin-top: 0px;"></h5>
+                  </div>
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                   
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/hV7kTZm/Janaki-Ammal-Younger-picture-738x1024.jpg" alt="" class="avatar">
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                                <a href="https://en.wikipedia.org/wiki/Janaki_Ammal"><h5><span class="bold">Dr. Janaki Ammal</span></h5></a>
+                                <h5><span class="bold">Botanist</span></h5>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+              </div>
+
+
+
+              
+              <div class="timeline__section">
+                <div class="timeline__left">
+                  <div class="timeline__time">
+                    <h5 style="margin-bottom: 0px; margin-top: 0px;"></h5>
+                  </div>
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                    <!--5-->
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/cc3PQyG/Kadambini-Ganguly-2.jpg"  alt="" class="avatar">
+                            </div>
+                        </div>
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                                
+                                    <a href="https://en.wikipedia.org/wiki/Kadambini_Ganguly"><h5><span class="bold">Dr.
+                                      Kadambini Ganguly</span></h5></a>
+                                <h5><span class="bold">Doctor</span></h5>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <!--SEC1-->
+              <div class="timeline__section">
+                <div class="timeline__left">
+                  <div class="timeline__time">
+                    <h5 style="margin-bottom: 0px; margin-top: 0px;"></h5>
+                  </div>
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+            
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/D58PSHW/Anna-Mani.jpg" alt="" class="avatar">
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                                
+                                <a href="https://en.wikipedia.org/wiki/Anna_Mani"><h5><span class="bold">Dr.
+                                  Anna Mani</span></h5></a>
+                                <h5><span class="bold">Meteorologist</span></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <!--SEC2-->
+              <div class="timeline__section">
+                <div class="timeline__left">
+                  <div class="timeline__time">
+                    <h5 style="margin-bottom: 0px; margin-top: 0px;"></h5>
+                  </div>
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                    
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/SN0gFnC/400px-Parimala.jpg" alt="" class="avatar">
+
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                            
+                                
+                                <a href="https://en.wikipedia.org/wiki/Raman_Parimala"><h5><span class="bold">Dr.
+                                  Raman Parimala</span></h5></a>
+                                <h5><span class="bold">Mathematician</span></h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+              </div>
+              <!---->
+              <div class="timeline__section">
+                <div class="timeline__left">
+                  <div class="timeline__time">
+                    <h5 style="margin-bottom: 0px; margin-top: 0px;"></h5>
+                  </div>
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                    
+                    <!--16-->
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/KjWM1N3/Darshan-Ranganathan.jpg" alt="" class="avatar">
+                                
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                                
+                              
+                                    <a href="https://en.wikipedia.org/wiki/Darshan_Ranganathan"><h5><span class="bold">Dr.
+                                      Darshan Ranganathan</span></h5></a>
+                                <h5><span class="bold">Organic Chemist</span></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              
+
+              
+              
+              
+              <!--SEC4-->
+              <div class="timeline__section">
+                <div class="timeline__left">
+                  <div class="timeline__time">
+                    <h5 style="margin-bottom: 0px; margin-top: 0px;"></h5>
+                  </div>
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                    <!--5-->
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/gS8grqM/Rajeshwari-Chatterjee-image.jpg" alt="" class="avatar"> 
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                            
+                                
+                                    <a href="https://en.wikipedia.org/wiki/Rajeshwari_Chatterjee"><h5><span class="bold">Dr.
+                                      Rajeshwari Chatterjee</span></h5></a>
+                                <h5><span class="bold">Engineer </span></h5>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+             
+        </section>
+        <!--Day 2-->
+        <section id="rauchbier" class="tab-panel">
+    
+            <div style="height: 5vh">
+              <div class="timeline">
+                <h2> </h2>
+          
+                <!--SEC1-->
+                <!--SEC2-->
+                <div class="timeline__section">
+                  <div class="timeline__left">
+                    <div class="timeline__time">
+                      <h5 style="margin-bottom: 0px; margin-top: 0px;"></h5>
+                    </div>
+                  </div>
+                  <div class="timeline__tracker">
+                    <div class="tracker"></div>
+                  </div>
+                  <div class="timeline__middle">
+                    <div class="timeline__bullet"></div>
+                  </div>
+          
+                  <div class="timeline__right">
+                    <!--2-->
+                    <div>
+                      <div class="timeline__right_speakers">
+                        <div class="speakers">
+                          <img src="https://i.ibb.co/tByGpBN/440px-Amrita-Sher-Gil-2.jpg" alt="Amrita Sher-gill"  class="avatar">
+          
+                        </div>
+                      </div>
+          
+                      <div class="timeline__right_details">
+                        <div class="timeline__content">
+                        
+                          
+                          <a href="https://en.wikipedia.org/wiki/Amrita_Sher-Gil"><h5><span class="bold">Amrita Sher-gill</span></h5></a>
+                          <h5><span class="bold">Hungarian-Indian painter</span></h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+               <!--SEC3-->
+                <div class="timeline__section">
+                  <div class="timeline__left">
+                    <div class="timeline__time">
+                      <h5 style="margin-bottom: 0px; margin-top: 0px;"></h5>
+                    </div>
+                  </div>
+                  <div class="timeline__tracker">
+                    <div class="tracker"></div>
+                  </div>
+                  <div class="timeline__middle">
+                    <div class="timeline__bullet"></div>
+                  </div>
+          
+                  <div class="timeline__right">
+                    <!--4-->
+                    <div>
+                      <div class="timeline__right_speakers">
+                        <div class="speakers">
+                          <img src="https://i.ibb.co/Z6XWCJP/Anjolie-Ela-Menon-cropped.jpg" alt="Anjali Ela Menon" class="avatar">
+                          
+                        </div>
+                      </div>
+          
+                      <div class="timeline__right_details">
+                        <div class="timeline__content">
+                          
+                           <a href="https://en.wikipedia.org/wiki/Anjolie_Ela_Menon"><h5><span class="bold">Anjolie ELa Menon</span></h5></a>
+                          <h5><span class="bold">Contemporary artist</span></h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--SEC4-->
+                <div class="timeline__section">
+                  <div class="timeline__left">
+                    <div class="timeline__time">
+                      <h5 style="margin-bottom: 0px; margin-top: 0px;"></h5>
+                    </div>
+                  </div>
+                  <div class="timeline__tracker">
+                    <div class="tracker"></div>
+                  </div>
+                  <div class="timeline__middle">
+                    <div class="timeline__bullet"></div>
+                  </div>
+          
+                  <div class="timeline__right">
+                    <!--7-->
+                    <div>
+                      <div class="timeline__right_speakers">
+                        <div class="speakers">
+                          <img src="https://i.ibb.co/KFgjNYR/images-2.jpg" alt="Avatar" class="avatar">  
+                         
+                        </div>
+                      </div>
+          
+                      <div class="timeline__right_details">
+                        <div class="timeline__content">
+                          
+                          <a href="https://en.wikipedia.org/wiki/Nalini_Malani"><h5><span class="bold">Nalini Malani</span></h5></a>
+                          <h5><span class="bold">Video Artist</span></h5>
+                        </div>
+                      </div>
+                    </div>    
+                  </div>
+                </div>
+          
+                
+                <!--SEC8-->
+                <div class="timeline__section">
+                  <div class="timeline__left">
+                    <div class="timeline__time">
+                      <h5 style="margin-bottom: 0px; margin-top: 0px;"></h5>
+                    </div>
+                  </div>
+                  <div class="timeline__tracker">
+                    <div class="tracker"></div>
+                  </div>
+                  <div class="timeline__middle">
+                    <div class="timeline__bullet"></div>
+                  </div>
+          
+                  <div class="timeline__right">
+                    <!--7-->
+                    <div>
+                      <div class="timeline__right_speakers">
+                        <div class="speakers">
+                            <img src="https://i.ibb.co/8c2F4Pm/images.jpg" alt="Avatar" class="avatar">  
+                        </div>
+                      </div>
+          
+                      <div class="timeline__right_details">
+                        <div class="timeline__content">
+                            <a href="https://en.wikipedia.org/wiki/Latika_Katt"><h5><span class="bold">Latika Katt</span></h5></a>
+                          <h5><span class="bold">Indian sculptor</span> </h5>
+                        </div>
+                      </div>
+                    </div>
+        <section id="Policy" class="tab-panel">
+          <div style="height: 5vh">
+          <br>
+          <br>
+            <div class="timeline">
+              <div class="timeline__section">
+                <div class="timeline__left">
+                  
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                   
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/Dk0LKBm/Kittur-Chenamma.jpg" alt="" class="avatar">
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                                <a href="https://en.wikipedia.org/wiki/Kittur_Chennamma"><h5><span class="bold">Kittur Rani Chennamma</span></h5></a>
+                                <h5><span class="bold">Freedom fighter</span></h5> 
+                                <br>
+                                <br>
+                              </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            <!--SEC0-->
+
+            <div class="timeline__section">
+                <div class="timeline__left">
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/zf7YBCX/Gandhi-Buri-Matangini-Hazra.jpg" alt="" class="avatar">
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                                <a href="https://en.wikipedia.org/wiki/Matangini_Hazra"><h5><span class="bold">Matangini Hazra</span>
+                                </h5></a>
+                                <h5><span class="bold">Freedom fighter</span></h5>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+              </div>
+            <div class="timeline__section">
+                <div class="timeline__left">
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/3Yfvs3q/JPG.jpg" alt="" class="avatar">
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                                <a href="https://en.wikipedia.org/wiki/Kanaklata_Barua"><h5><span class="bold">Kanaklata Barua</span>
+                                </h5></a>
+                                <h5><span class="bold">Freedom fighter</span></h5>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+              </div>
+              <div class="timeline__section">
+                <div class="timeline__left">
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                   
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/b2qMLx6/200px-Begum-hazrat-mahal.jpg" alt="" class="avatar">
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                                <a href="https://en.wikipedia.org/wiki/Begum_Hazrat_Mahal"><h5><span class="bold">Begum Hazrat Mahal </span>
+                                </h5></a>
+                                <h5><span class="bold">Freedom fighter</span></h5> 
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+              </div>
+
+
+
+              
+              <div class="timeline__section">
+                <div class="timeline__left">
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                    <!--5-->
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/fQ6HCQW/220px-Lakshmi-Sahgal.jpg" alt="" class="avatar">
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                                <a href="https://en.wikipedia.org/wiki/Lakshmi_Sahgal"><h5><span class="bold">Lakshmi Sahgal</span>
+                                </h5></a>
+                                <h5><span class="bold">Freedom fighter</span></h5> 
+                                <br>
+                                <br>
+                            </div>
+                            
+                        </div>
+
+                        
+                    </div>
+
+                    
+                </div>
+              </div>
+              <!--SEC1-->
+              <div class="timeline__section">
+                <div class="timeline__left">
+                </div>
+                <div class="timeline__tracker">
+                  <div class="tracker"></div>
+                </div>
+                <div class="timeline__middle">
+                  <div class="timeline__bullet"></div>
+                </div>
+                
+                <div class="timeline__right">
+                    <div>
+                        <div class="timeline__right_speakers">
+                            <div class="speakers">
+                                <img src="https://i.ibb.co/WnyHyLZ/Madam-Bhikaiji-Cama.jpg" alt="" class="avatar">
+                            </div>
+                        </div>
+                        
+                        <div class="timeline__right_details">
+                            <div class="timeline__content">
+                                <a href="https://en.wikipedia.org/wiki/Bhikaiji_Cama"><h5><span class="bold">Bhikaiji Cama </span>
+                                </h5></a>
+                                <h5><span class="bold">Freedom fighter</span></h5>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+
+                  
+                  </div>
+                </div>
+            </main>
+            <!-- <footer style="margin-bottom: 5px;">
+              <p>&copy; 2023 My Blog</p>
+          </footer> -->
+        </body>
+      
+        <script>
+          function change(Id){
+              var elem = document.getElementById(Id);
+              if (elem.value=="x") elem.value = "+";
+              else elem.value = "x";
+          }
+          const timelines = document.querySelectorAll(".timeline__right");
+        
+          const trackers = document.querySelectorAll(".timeline__tracker");
+          //console.log(timelines);
+        
+          window.addEventListener(
+              "scroll",
+              (e) => {
+              timelines.forEach((timeline, i) => {
+              //  Animate on scroll
+              if (trackers[i].offsetTop > 0) {
+              timeline
+              .querySelector(".timeline__content")
+              .classList.add("animate-on-scroll");
+              }else {
+              timeline
+              .querySelector(".timeline__content")
+              .classList.remove("animate-on-scroll");
+              }
+              
+              //       Timeline progress
+              timeline.style.background = `linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) ${
+                  trackers[i].offsetTop + 5
+              }px, 7A78D8  ${
+                  trackers[i].offsetTop + 5
+              }px, 7A78D8 100%)`;
+              });
+              },
+              { passive: true }
+          );
+        </script>
+      </html>

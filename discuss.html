@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Forum</title>
+    <link rel="stylesheet" href="discussions.css">
+    <style>
+        #searchResults {
+            display: none;
+            margin-top: 20px;
+        }
+        .wikidataFrame {
+            width: 80vw;
+            height: 50vh;
+            border: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="postf.html">POSTS</a></li>
+                <li><a href="nominatef.html">NOMINATE</a></li>
+                <li><a href="discuss.html">DISCUSS</a></li>
+                <li><a href="loginrealf.html">LOGIN</a></li>
+                <li><a href="loginf.html">SIGNUP</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+    <input type="text" id="searchInput" placeholder="Enter search term">
+    <button onclick="search()" id="searchbutton">Search</button>
+
+    <div id="searchResults"></div>
+
+    <iframe id="boxerFrame" class="wikidataFrame" src="https://query.wikidata.org/embed.html#SELECT%20DISTINCT%20%3Fitem%20%3FitemLabel%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%22.%20%7D%0A%20%20%7B%0A%20%20%20%20SELECT%20DISTINCT%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20%20%20%3Fitem%20p%3AP21%20%3Fstatement0.%0A%20%20%20%20%20%20%3Fstatement0%20%28ps%3AP21%2F%28wdt%3AP279%2a%29%29%20wd%3AQ6581072.%0A%20%20%20%20%20%20%3Fitem%20p%3AP27%20%3Fstatement1.%0A%20%20%20%20%20%20%3Fstatement1%20%28ps%3AP27%2F%28wdt%3AP279%2a%29%29%20wd%3AQ668.%0A%20%20%20%20%20%20%3Fitem%20p%3AP106%20%3Fstatement2.%0A%20%20%20%20%20%20%3Fstatement2%20%28ps%3AP106%2F%28wdt%3AP279%2a%29%29%20wd%3AQ11338576.%0A%20%20%20%20%7D%0A%20%20%20%20LIMIT%20100%0A%20%20%7D%0A%7D" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+
+    <iframe id="femaleChefFrame" class="wikidataFrame" src="https://query.wikidata.org/embed.html#SELECT%20DISTINCT%20%3Fitem%20%3FitemLabel%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%22.%20%7D%0A%20%20%7B%0A%20%20%20%20SELECT%20DISTINCT%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20%20%20%3Fitem%20p%3AP21%20%3Fstatement0.%0A%20%20%20%20%20%20%3Fstatement0%20%28ps%3AP21%2F%28wdt%3AP279%2a%29%29%20wd%3AQ6581072.%0A%20%20%20%20%20%20%3Fitem%20p%3AP27%20%3Fstatement1.%0A%20%20%20%20%20%20%3Fstatement1%20%28ps%3AP27%2F%28wdt%3AP279%2a%29%29%20wd%3AQ668.%0A%20%20%20%20%20%20%3Fitem%20p%3AP106%20%3Fstatement2.%0A%20%20%20%20%20%20%3Fstatement2%20%28ps%3AP106%2F%28wdt%3AP279%2a%29%29%20wd%3AQ3499072.%0A%20%20%20%20%7D%0A%20%20%20%20LIMIT%20100%0A%20%20%7D%0A%7D" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+    <a href="quiz.html" class="quiz-button">Take the Quiz Now!</a>
+    <script>
+        function search() {
+            var searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+
+            if (searchTerm === 'female boxer') {
+                hideSearchResults();
+                hideIframes();
+                document.getElementById('boxerFrame').style.display = 'block';
+            } else if (searchTerm === 'female chef') {
+                hideSearchResults();
+                hideIframes();
+                document.getElementById('femaleChefFrame').style.display = 'block';
+            } else {
+                var content = document.body.innerText;
+                var regex = new RegExp(searchTerm, 'gi');
+                var matches = content.match(regex);
+
+                if (matches) {
+                    var resultsDiv = document.getElementById('searchResults');
+                    resultsDiv.style.display = 'block';
+                    resultsDiv.innerHTML = '';
+
+                    matches.forEach(match => {
+                        var span = document.createElement('span');
+                        span.textContent = match;
+                        resultsDiv.appendChild(span);
+                        resultsDiv.appendChild(document.createElement('br'));
+                    });
+                } else {
+                    alert('No matches found.');
+                }
+            }
+        }
+
+        function hideIframes() {
+            document.querySelectorAll('.wikidataFrame').forEach(iframe => {
+                iframe.style.display = 'none';
+            });
+        }
+
+        function hideSearchResults() {
+            document.getElementById('searchResults').style.display = 'none';
+        }
+    </script>
+     <main>
+        <section class="discussion">
+            <h2>Discussion Threads</h2>
+            
+            <blockquote><div class="quote-box">
+                <p> “Make the most of yourself by fanning the tiny, inner sparks of possibility into flames of achievement.” <br><br>– Golda Meir, first female prime minister of Israel </p>
+            </div></blockquote>
+            <blockquote><div class="quote-box">
+                <p> “You should never let your fears prevent you from doing what you know is right.” <br><br>– Aung San Suu Kyi, human rights activist, Nobel Peace Prize winner, and state counselor of Myanmar </p>
+            </div></blockquote>
+            <blockquote><div class="quote-box">
+                <p> “I want little girls to grow up knowing they can do anything, even play football.” <br><br>– Jen Welter, first female coach in the NFL </p>
+            </div></blockquote>
+            
+            
+        </section>
+        <br>
+        <section class="user-input">
+            <form>
+                <label for="userComment" >Your Comment:</label><br>
+                <textarea id="userComment" name="userComment" rows="4" cols="50" placeholder="Type your comment here..."></textarea>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2023 My Blog</p>
+    </footer>
+</body>
+</html>

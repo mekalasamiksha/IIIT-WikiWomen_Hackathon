@@ -1,0 +1,148 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #800080; 
+    padding: 10px 0;
+    height: 43px;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 15px;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.wikidataFrame {
+    width: 80vw;
+    height: 50vh;
+    border: none;
+    display: none;
+}
+
+.quote-box {
+    background-color: lavender;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-input textarea {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .user-input input[type="submit"] {
+        background-color: pink;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .user-input input[type="submit"]:hover {
+        background-color: palevioletred;
+    }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#searchbutton{
+    background-color: pink;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#searchInput{
+    margin-left: 530px;
+    border-radius: 5px;
+    width: 300px;
+    height: 30px;
+}
+
+.search-bar button:hover {
+    background-color: #555;
+}
+
+main {
+    padding: 20px;
+}
+
+.discussion,
+.comments {
+    margin-bottom: 30px;
+}
+
+.discussion h2,
+.comments h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+footer {
+    background-color: purple;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 0;
+}
+
+
+.quiz-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 15px 20px; 
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quiz-button:hover {
+    background-color: #ff6666;
+}

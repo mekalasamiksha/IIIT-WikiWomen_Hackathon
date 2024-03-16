@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9; 
+    }
+
+    .quiz-container h1 {
+      text-align: center;
+      margin-top: 20px;
+      color: #800080; 
+    }
+
+    .quiz-question {
+      margin-top: 30px;
+    }
+
+    .quiz-question h2 {
+      margin-bottom: 10px;
+    }
+
+    .quiz-options {
+      margin-bottom: 20px;
+    }
+
+    .quiz-options label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333; 
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #800080; 
+      color: #fff; 
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+    }
+
+    button:hover {
+      background-color: #6a007d; 
+    }
+
+    #score {
+      text-align: center;
+      color: #333; 
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Quiz: Women Empowerment</h1>
+
+    <div class="quiz-question">
+      <h2>Q1. Which field did Dr. Indira Hinduja significantly contribute to?</h2>
+      <div class="quiz-options">
+        <label><input type="radio" name="answer1" value="A"> Space exploration</label>
+        <label><input type="radio" name="answer1" value="B"> Environmental science</label>
+        <label><input type="radio" name="answer1" value="C"> Medical research</label>
+        <label><input type="radio" name="answer1" value="D"> Nuclear physics</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <h2>Q2. Which Indian artist is celebrated for her colorful and expressive paintings, often depicting rural life and women?</h2>
+      <div class="quiz-options">
+        <label><input type="radio" name="answer2" value="A"> Amrita Sher-Gil</label>
+        <label><input type="radio" name="answer2" value="B"> Anjolie Ela Menon</label>
+        <label><input type="radio" name="answer2" value="C"> Kiran Nadar</label>
+        <label><input type="radio" name="answer2" value="D"> Feroze Gujral</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <h2>Q3. Who is the Managing Director and Chief Financial Officer (CFO) of the World Bank?</h2>
+      <div class="quiz-options">
+        <label><input type="radio" name="answer3" value="A"> Anshula Kant</label>
+        <label><input type="radio" name="answer3" value="B"> Nandita Sinha</label>
+        <label><input type="radio" name="answer3" value="C"> Shriti Malhotra</label>
+        <label><input type="radio" name="answer3" value="D"> Rajshri Deshpande</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <h2>Q4. What percentage of women hold senior leadership positions in Fortune 500 companies?</h2>
+      <div class="quiz-options">
+        <label><input type="radio" name="answer4" value="A"> 5%</label>
+        <label><input type="radio" name="answer4" value="B"> 15%</label>
+        <label><input type="radio" name="answer4" value="C"> 25%</label>
+        <label><input type="radio" name="answer4" value="D"> 35%</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <h2>Q5. Who was the first woman to win a Nobel Prize?</h2>
+      <div class="quiz-options">
+        <label><input type="radio" name="answer5" value="A"> Marie Curie</label>
+        <label><input type="radio" name="answer5" value="B"> Rosalind Franklin</label>
+        <label><input type="radio" name="answer5" value="C"> Ada Lovelace</label>
+        <label><input type="radio" name="answer5" value="D"> Hypatia of Alexandria</label>
+      </div>
+    </div>
+
+    <button onclick="submitQuiz()">Submit Quiz</button>
+    <p id="score"></p>
+  </div>
+  
+  <script>
+    function submitQuiz() {
+      var answers = document.querySelectorAll('input[type="radio"]:checked');
+      var score = 0;
+      for (var i = 0; i < answers.length; i++) {
+        var questionId = answers[i].name;
+        var correctAnswer = getCorrectAnswer(questionId);
+        if (answers[i].value === correctAnswer) {
+          score++;
+        }
+      }
+      var totalQuestions = 5; 
+      var percentage = (score / totalQuestions) * 100;
+      document.getElementById('score').textContent = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%)';
+    }
+  
+    function getCorrectAnswer(questionId) {
+      switch (questionId) {
+        case 'answer1':
+          return 'C'; 
+        case 'answer2':
+          return 'A'; 
+        case 'answer3':
+          return 'A'; 
+        case 'answer4':
+          return 'B'; 
+        case 'answer5':
+          return 'A'; 
+        default:
+          return '';
+      }
+    }
+  </script>
+  
+</body>
+</html>
